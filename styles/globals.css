@@ -944,6 +944,10 @@ margin-top: 160px;
   margin-top: 20px;
 }
 
+.subcategory-heading{
+  margin-bottom: 20px;
+}
+
 @media screen and (max-width:800px) {
   .hero-banner-container{
     height: 560px;

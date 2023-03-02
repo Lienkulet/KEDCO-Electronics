@@ -18,59 +18,63 @@ const SearchName = ({ products }) => {
   const mutationRefHightLow = useRef(HighToLow);
 
   useEffect(() => {
-    findItem(searchName, products);
+    
+      findItem(searchName, products);
+    
+      sortProducts('ok', foundItem);
+    // if (foundItem.length > 0){
+    //   setSortedProdutsBrand(foundItem);
+    // }
 
-    if (foundItem.length > 0)
-      setSortedProdutsBrand(foundItem);
-
-    console.log(foundItem)
+    // console.log('f',foundItem)
   }, [searchName]);
 
 
   useEffect(() => {
     setMaxValue(max);
     setMinValue(min);
-    setSortedProdutsBrand(foundItem);
-    sortProducts('ok', sortedProdutsBrand);
+    // setSortedProdutsBrand(foundItem);
+    // sortProducts('ok', sortedProdutsBrand);
+    sortProducts('ok', foundItem);
   }, []);
 
   
 
-  const sortBrand = (chosenBrand, productss) => {
-    if (chosenBrand === 'All') {
-      setSortedProdutsBrand(productss);
-      return;
-    }
-    setSortedProdutsBrand(productss.filter(product => product.brand === chosenBrand));
-    // sortProducts('ok', sortedProdutsBrand); 
-    // console.log(sortedProdutsBrand);
-  }
+  // const sortBrand = (chosenBrand, productss) => {
+  //   if (chosenBrand === 'All') {
+  //     setSortedProdutsBrand(productss);
+  //     return;
+  //   }
+  //   setSortedProdutsBrand(productss.filter(product => product.brand === chosenBrand));
+  //   // sortProducts('ok', sortedProdutsBrand); 
+  //   // console.log(sortedProdutsBrand);
+  // }
 
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-    } else {
-      console.log("sortedProdutsBrand after update", sortedProdutsBrand);
-    }
-  }, [sortedProdutsBrand]);
+  // useEffect(() => {
+  //   if (isFirstRender.current) {
+  //     isFirstRender.current = false;
+  //   } else {
+  //     console.log("sortedProdutsBrand after update", sortedProdutsBrand);
+  //   }
+  // }, [sortedProdutsBrand]);
 
   // Updating mutation ref
-  useEffect(() => {
-    mutationRef.current = sortedProdutsBrand;
-    sortProducts('ok', mutationRef.current);
+  // useEffect(() => {
+  //   mutationRef.current = sortedProdutsBrand;
+  //   sortProducts('ok', mutationRef.current);
 
-  }, [sortedProdutsBrand]);
+  // }, [sortedProdutsBrand]);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      // console.log("Actual state", sortedProdutsBrand);
-      // console.log("mutationRef state", mutationRef.current);
-    }, 5000);
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     // console.log("Actual state", sortedProdutsBrand);
+  //     // console.log("mutationRef state", mutationRef.current);
+  //   }, 5000);
 
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, []);
 
   useEffect(() => {
     mutationRefHightLow.current = HighToLow;
@@ -114,23 +118,15 @@ const SearchName = ({ products }) => {
   return (
     <div>
       <div className="subcategory-heading">
-        <h1>{HighToLow.length} {HighToLow.length > 1 ? 'products' : 'product'} found</h1>
+        <h1>{tempPriceProducts.length} {tempPriceProducts.length > 1 ? 'products' : 'product'} found</h1>
         <div className='filters'>
           <div>
-
-          <div className='brands'>
-            <h3>Brand:</h3>
-            <select className='select_brand' onChange={e => sortBrand(e.target.value, foundItem)}>
-              <option class='select-option' value={'All'}>All</option>
-              <option class='select-option' value={'Apple'}>Apple</option>
-              <option class='select-option' value={'Xiaomi'}>Xiaomi</option>
-              <option class='select-option' value={'Samsung'}>Samsung</option>
-            </select>
-          </div>
           <div className='sort'>
           <h3>Price:</h3>
-            <button type='button' className={SortedProductsType == 'low' ? 'sortBtnActive sortBtn' : 'sortBtn'} onClick={() => { sortProducts('low', sortedProdutsBrand) }}>Ascending</button>
-            <button type='button' className={SortedProductsType == 'high' ? 'sortBtnActive sortBtn' : 'sortBtn'} onClick={() => { sortProducts('high', sortedProdutsBrand) }}>Descending</button>
+          <div className='searchSortBtns'>
+            <button type='button' className={SortedProductsType == 'low' ? 'sortBtnActive sortBtn' : 'sortBtn'} onClick={() => { sortProducts('low', foundItem) }}>Ascending</button>
+            <button type='button' className={SortedProductsType == 'high' ? 'sortBtnActive sortBtn' : 'sortBtn'} onClick={() => { sortProducts('high', foundItem) }}>Descending</button>
+          </div>
           </div>
         </div>
         <div className='price-range'>
