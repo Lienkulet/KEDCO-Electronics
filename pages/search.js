@@ -14,21 +14,35 @@ const SearchName = ({ products }) => {
   const priceCap = 1000
 
   const isFirstRender = useRef(true);
-  const mutationRef = useRef(sortedProdutsBrand);
+  const mutationRef = useRef(searchName);
+  const mutationRefFoundItem = useRef(foundItem);
   const mutationRefHightLow = useRef(HighToLow);
 
-  useEffect(() => {
+  // useEffect(() => {
     
-      findItem(searchName, products);
+  //     findItem(searchName, products);
     
-      sortProducts('ok', foundItem);
-    // if (foundItem.length > 0){
-    //   setSortedProdutsBrand(foundItem);
-    // }
+  //     sortProducts('ok', foundItem);
+  //   // if (foundItem.length > 0){
+  //   //   setSortedProdutsBrand(foundItem);
+  //   // }
 
-    // console.log('f',foundItem)
+  //   // console.log('f',foundItem)
+  // }, [searchName]);
+
+
+  // Updating mutation ref
+  useEffect(() => {
+    mutationRef.current = searchName;
+    findItem(mutationRef.current, products);
+
   }, [searchName]);
 
+  useEffect(() => {
+    mutationRefFoundItem.current = foundItem;
+      sortProducts('ok', mutationRefFoundItem.current);
+
+  }, [foundItem]);
 
   useEffect(() => {
     setMaxValue(max);
