@@ -10,19 +10,16 @@ export default async function handler(req, res) {
                 submit_type: 'pay',
                 mode: 'payment',
                 payment_method_types: ['card'],
-                billing_address_collection: 'required',
-                billing_details: {
-                    address: {
-                      city: "San Francisco",
-                      country: "US",
-                      line1: "1234 Fake Street",
-                      line2: null,
-                      postal_code: "94102",
-                      state: "CA"
-                    },
-                    name: null,
-                    phone: "+15555555555"
-                  },
+                // billing_address_collection: 'auto',
+                shipping_address_collection: 
+                {
+                    recipient: req.body.recipient,
+                    addressLine: req.body.address1,
+                    city: req.body.city,
+                    region: req.body.state,
+                    postalCode: req.body.postalCode,
+                    country: req.body.country 
+                },
                 shipping_options: [
                     { shipping_rate: 'shr_1MMs9rDi2lDXwraPaPLr81LF' },
                     { shipping_rate: 'shr_1MMsAFDi2lDXwraPIY0dYaFO' },
