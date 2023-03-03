@@ -10,7 +10,15 @@ export default async function handler(req, res) {
                 submit_type: 'pay',
                 mode: 'payment',
                 payment_method_types: ['card'],
-                billing_address_collection: 'auto',
+                billing: {
+                    address: {
+                      city: req.body.city,
+                      line1: req.body.address1,
+                      state: req.body.state,
+                      postal_code: req.body.postalCode,
+                      country: req.body.country,
+                    },
+                },
                 shipping_options: [
                     { shipping_rate: 'shr_1MMs9rDi2lDXwraPaPLr81LF' },
                     { shipping_rate: 'shr_1MMsAFDi2lDXwraPIY0dYaFO' },
