@@ -11,9 +11,10 @@ const Navbar = () => {
   
   return (
     <div className='navbar-container'>
+      <div className="nav-items">
      {showMenu && <Menu />}
      
-    
+     
      <p className='logo' >
         <Link href='/'>KEDCO Electronics</Link>
       </p>
@@ -40,8 +41,25 @@ const Navbar = () => {
         <AiOutlineShopping />
         <span className="cart-item-qty">{totalQuantities}</span>
       </button>
-      
       {showCart && <Cart />}
+
+     </div>
+
+     <div className="search-bar-mobile">
+        <input type="text" value={searchName} onChange={(event) => { setSearchName(event.target.value); }} 
+         placeholder='Search the name of a product' />
+        <Link href={searchName != undefined? '/search' : '/'} >
+          <button type="button" className='searchBtn'>
+          <AiOutlineSearch />
+          </button>
+        </Link>
+      </div>
+
+    
+
+
+      
+
     </div>
   )
 
