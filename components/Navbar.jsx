@@ -14,11 +14,9 @@ const Navbar = () => {
       <div className="nav-items">
      {showMenu && <Menu />}
      
-     
      <p className='logo' >
         <Link href='/'>KEDCO Electronics</Link>
       </p>
-
      
       <button type='button' className='menu-icon' onClick={() => setShowMenu(true)}>
         <AiOutlineMenu />
@@ -34,8 +32,6 @@ const Navbar = () => {
           </button>
         </Link>
       </div>
- 
-      
 
       <button type='button' className='cart-icon' onClick={() => setShowCart(true)}>
         <AiOutlineShopping />
@@ -54,12 +50,6 @@ const Navbar = () => {
           </button>
         </Link>
       </div>
-
-    
-
-
-      
-
     </div>
   )
 
