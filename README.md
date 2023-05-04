@@ -1,8 +1,8 @@
-## Electronics Store: An E-Commerce Website
+## Kedco Electronics Store: An E-Commerce Website
 
 ![fiverr kedco](https://user-images.githubusercontent.com/104018505/230379699-66862880-91fc-4d81-9835-cdd3e336d0ce.png)
 
-Electronics Store is an online store that specializes in selling electronic devices. 
+Kedco Electronics Store is an online store that specializes in selling electronic devices. 
 The website is built using Next.js and React frameworks, with content managed using Sanity CMS, and payment processing handled through Stripe.
 
 ## Features
