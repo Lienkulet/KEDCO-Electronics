@@ -2,7 +2,6 @@ import React from 'react';
 import { BsBagXFill } from 'react-icons/bs';
 import Link from 'next/link';
 
-
 const Canceled = () => {
   return (
     <div className='cancel-wrapper'>
